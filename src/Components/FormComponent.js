@@ -20,18 +20,35 @@ const Grid = styled.div`
 const Form = styled.form`
   width: 100%;
   height: 100%;
+  background-color: #f7f9ff;
+  color: #3f8cb0;
+  padding: 1.2rem;
+  border-radius: 10px;
 `;
 
 const Row = styled.div`
   display: flex;
   width: 100%;
   margin-top: ${(props) => props.marginTop}px;
+  margin-bottom: ${(props) => props.marginBottom}px;
 `;
 
 const Col = styled.div`
   padding: 10px 0px 0px 0px;
   flex: ${(props) => props.size};
   text-align: ${(props) => props.align};
+  font-size: ${(props) => props.fontSize}rem;
+  font-weight: 500;
+`;
+
+const LabelMedia = styled.label`
+  margin-bottom: 0.5rem;
+  width: 100%;
+  font-weight: 500;
+  font-size: 1.2rem;
+  p {
+    padding: 10px 0px 10px 0px;
+  }
 `;
 
 const Label = styled.label`
@@ -44,16 +61,9 @@ const Label = styled.label`
   }
 `;
 
-const LabelMedia = styled.label`
-  margin-bottom: 0.5rem;
-  width: 100%;
-  p {
-    padding: 10px 0px 10px 0px;
-  }
-`;
-
 const Input = styled.input`
   padding: 0.5rem;
+  border: none;
   border-radius: 8px;
   width: 100%;
   height: 40px;
@@ -77,12 +87,13 @@ const Button = styled.button`
   width: 150px;
   border-radius: 10px;
   height: 40px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   margin-left: 10px;
-  color: white;
+  /* color: white; */
   border: none;
   cursor: pointer;
+  background-color: white;
   color: #3f8cb0;
   &:hover {
     color: white;
@@ -144,17 +155,22 @@ function FormComponent() {
           <Row>
             <DatePickerComponent />
           </Row>
-          <Row>
+
+          <Row marginBottom={10}>
             {optionsData.map((item, index) => (
-              <Col key={index} size={item.size} align={item.align}>
+              <Col
+                key={index}
+                fontSize={1.2}
+                size={item.size}
+                align={item.align}
+              >
                 {item.name}
               </Col>
             ))}
           </Row>
-
           {costs.map((item, index) => (
             <Row key={index}>
-              <Col size={1}>
+              <Col size={1} fontSize={1}>
                 <Label
                   name='name'
                   data-id={index}
@@ -185,10 +201,10 @@ function FormComponent() {
           ))}
 
           <Row marginTop={10}>
-            <Col size={1}>
+            <Col size={1} fontSize={1.2}>
               <p>Total budget</p>
             </Col>
-            <Col size={1}>
+            <Col size={1} fontSize={1.2}>
               <p>{getTotalCosts()}</p>
             </Col>
           </Row>
