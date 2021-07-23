@@ -1,22 +1,22 @@
 export const optionsData = [
   {
-    name: "Channel",
+    name: 'Channel',
     size: 1,
-    align: "left"
+    align: 'left',
   },
   {
-    name: "Budget",
+    name: 'Budget',
     size: 1,
-    align: "left"
+    align: 'left',
   },
   {
-    name: "Keep consistent",
+    name: 'Keep consistent',
     size: 1,
-    align: "center"
+    align: 'center',
   },
   {
-    name: "Exclude",
+    name: 'Exclude',
     size: 1,
-    align: "center"
-  }
-]
+    align: 'center',
+  },
+];

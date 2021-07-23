@@ -10,18 +10,26 @@ const DatePickerWrap = styled.section`
   justify-content: end;
   font-weight: ${(props) => props.fontWeight};
 `;
-const DatePickerStartWrap = styled.div`
+
+const DatePickerInnerWrap = styled.div`
   width: 50%;
   padding-right: 10px;
   font-weight: 500;
   font-size: 1.2rem;
-  .dataPicker {
+  letter-spacing: 0.05rem;
+`;
+
+const DatePickerStartWrap = styled(DatePickerInnerWrap)`
+  .datePicker {
     padding: 0.5rem;
     width: 100%;
     margin-bottom: 0.5rem;
     border-radius: 8px;
     height: 40px;
     outline: none;
+    border: none;
+    color: #757575;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
   .react-datepicker-wrapper {
     width: 100%;
@@ -30,22 +38,22 @@ const DatePickerStartWrap = styled.div`
     padding: 10px 0px 10px 0px;
   }
 `;
-const DatePickerEndWrap = styled.div`
-  width: 50%;
-  font-weight: 500;
-  font-size: 1.2rem;
-  .react-datepicker-wrapper {
-    width: 100%;
-  }
-  .dataPicker {
+const DatePickerEndWrap = styled(DatePickerInnerWrap)`
+  .datePicker {
     padding: 0.5rem;
     width: 100%;
     margin-bottom: 0.5rem;
     border-radius: 8px;
     height: 40px;
+    border: none;
+    color: #757575;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  .react-datepicker-wrapper {
+    width: 100%;
   }
   p {
-    padding: 10px 0px 10px 0px;
+    padding: 0.6rem 0rem;
   }
 `;
 
@@ -63,7 +71,7 @@ const DatePickerComponent = () => {
           selectsStart
           startDate={startDate}
           endDate={endDate}
-          className='dataPicker'
+          className='datePicker'
         />
       </DatePickerStartWrap>
       <DatePickerEndWrap>
@@ -75,7 +83,7 @@ const DatePickerComponent = () => {
           startDate={startDate}
           endDate={endDate}
           minDate={startDate}
-          className='dataPicker'
+          className='datePicker'
         />
       </DatePickerEndWrap>
     </DatePickerWrap>

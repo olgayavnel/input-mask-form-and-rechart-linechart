@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { defaultCostsData } from '../data/defaultCostsData';
 import { optionsData } from '../data/optionsData';
 import DatePickerComponent from './DatePickerComponent';
+import { Button } from './FormButton';
+import { Checkbox } from './FormCheckbox';
 
 const Section = styled.section`
   min-height: 100vh;
@@ -21,23 +23,27 @@ const Form = styled.form`
   width: 100%;
   height: 100%;
   background-color: #f7f9ff;
-  color: #3f8cb0;
+  color: #336581;
   padding: 1.2rem;
   border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 `;
 
 const Row = styled.div`
   display: flex;
+  align-items: center;
   width: 100%;
+  max-width: ${(props) => props.maxWidth}%;
   margin-top: ${(props) => props.marginTop}px;
   margin-bottom: ${(props) => props.marginBottom}px;
 `;
 
 const Col = styled.div`
-  padding: 10px 0px 0px 0px;
+  padding-top: 0.6rem;
   flex: ${(props) => props.size};
   text-align: ${(props) => props.align};
   font-size: ${(props) => props.fontSize}rem;
+  letter-spacing: ${(props) => props.letterSpacing}rem;
   font-weight: 500;
 `;
 
@@ -47,7 +53,8 @@ const LabelMedia = styled.label`
   font-weight: 500;
   font-size: 1.2rem;
   p {
-    padding: 10px 0px 10px 0px;
+    padding: 0.6rem 0rem;
+    letter-spacing: 0.05rem;
   }
 `;
 
@@ -57,7 +64,7 @@ const Label = styled.label`
   align-items: center;
   display: flex;
   p {
-    padding: 10px 0px 10px 0px;
+    padding: 0.6rem 0rem;
   }
 `;
 
@@ -70,34 +77,9 @@ const Input = styled.input`
   margin-bottom: 0.5rem;
   outline: none;
   border-color: ${(props) => props.borderColor};
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   .budgetInput {
     width: 90%;
-  }
-`;
-
-const Checkbox = styled.input`
-  padding: 0.5rem;
-  border-radius: 3px;
-  width: 100%;
-  margin-bottom: 0.5rem;
-  height: 20px;
-`;
-
-const Button = styled.button`
-  width: 150px;
-  border-radius: 10px;
-  height: 40px;
-  font-size: 1rem;
-  font-weight: 500;
-  margin-left: 10px;
-  /* color: white; */
-  border: none;
-  cursor: pointer;
-  background-color: white;
-  color: #3f8cb0;
-  &:hover {
-    color: white;
-    background-color: #3f8cb0;
   }
 `;
 
@@ -141,7 +123,13 @@ function FormComponent() {
   return (
     <Section>
       <Grid>
-        <Form onSubmit={console.log('hello')}>
+        <Form
+          onSubmit={console.log('hello')}
+          data-aos='zoom-in'
+          data-aos-duration='500'
+          data-aos-once='true'
+          data-aos-anchor-placement='center bottom'
+        >
           <Row>
             <LabelMedia>
               <p>Media Plan</p>
@@ -163,6 +151,7 @@ function FormComponent() {
                 fontSize={1.2}
                 size={item.size}
                 align={item.align}
+                letterSpacing={0.05}
               >
                 {item.name}
               </Col>
@@ -170,7 +159,7 @@ function FormComponent() {
           </Row>
           {costs.map((item, index) => (
             <Row key={index}>
-              <Col size={1} fontSize={1}>
+              <Col size={1} fontSize={1} letterSpacing={0.05}>
                 <Label
                   name='name'
                   data-id={index}
@@ -200,8 +189,8 @@ function FormComponent() {
             </Row>
           ))}
 
-          <Row marginTop={10}>
-            <Col size={1} fontSize={1.2}>
+          <Row marginTop={10} maxWidth={50}>
+            <Col size={1} fontSize={1.2} letterSpacing={0.05}>
               <p>Total budget</p>
             </Col>
             <Col size={1} fontSize={1.2}>
