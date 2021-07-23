@@ -17,6 +17,16 @@ const Section = styled.section`
 const Grid = styled.div`
   width: 700px;
   margin: 50px auto;
+
+  @media (max-width: 745px) {
+    width: 90%;
+    margin: 30px auto;
+  }
+
+  @media (max-width: 360px) {
+    width: 100%;
+    margin: 30px 10px;
+  }
 `;
 
 const Form = styled.form`
@@ -45,6 +55,14 @@ const Col = styled.div`
   font-size: ${(props) => props.fontSize}rem;
   letter-spacing: ${(props) => props.letterSpacing}rem;
   font-weight: 500;
+
+  @media (max-width: 745px) {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 360px) {
+    font-size: 0.7rem;
+  }
 `;
 
 const LabelMedia = styled.label`
@@ -56,6 +74,10 @@ const LabelMedia = styled.label`
     padding: 0.6rem 0rem;
     letter-spacing: 0.05rem;
   }
+
+  @media (max-width: 745px) {
+    font-size: 1rem;
+  }
 `;
 
 const Label = styled.label`
@@ -66,18 +88,29 @@ const Label = styled.label`
   p {
     padding: 0.6rem 0rem;
   }
+
+  @media (max-width: 550px) {
+    word-break: break-word;
+    padding-right: 0.5rem;
+  }
 `;
 
 const Input = styled.input`
   padding: 0.5rem;
-  border: none;
+  border: transparent;
   border-radius: 8px;
   width: 100%;
   height: 40px;
   margin-bottom: 0.5rem;
   outline: none;
-  border-color: ${(props) => props.borderColor};
+  color: #336581;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+  &:focus {
+    border: 1px solid #336581;
+    border-color: ${(props) => props.borderColor};
+  }
+
   .budgetInput {
     width: 90%;
   }
@@ -194,7 +227,7 @@ function FormComponent() {
               <p>Total budget</p>
             </Col>
             <Col size={1} fontSize={1.2}>
-              <p>{getTotalCosts()}</p>
+              <p>${getTotalCosts()}</p>
             </Col>
           </Row>
           <Row marginTop={10}>

@@ -17,6 +17,10 @@ const DatePickerInnerWrap = styled.div`
   font-weight: 500;
   font-size: 1.2rem;
   letter-spacing: 0.05rem;
+
+  @media (max-width: 745px) {
+    font-size: 1rem;
+  }
 `;
 
 const DatePickerStartWrap = styled(DatePickerInnerWrap)`
@@ -30,6 +34,11 @@ const DatePickerStartWrap = styled(DatePickerInnerWrap)`
     border: none;
     color: #757575;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+    &:focus {
+      border: 1px solid #336581;
+      border-color: ${(props) => props.borderColor};
+    }
   }
   .react-datepicker-wrapper {
     width: 100%;
@@ -45,9 +54,15 @@ const DatePickerEndWrap = styled(DatePickerInnerWrap)`
     margin-bottom: 0.5rem;
     border-radius: 8px;
     height: 40px;
+    outline: none;
     border: none;
     color: #757575;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+    &:focus {
+      border: 1px solid #336581;
+      border-color: ${(props) => props.borderColor};
+    }
   }
   .react-datepicker-wrapper {
     width: 100%;
