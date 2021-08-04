@@ -71,6 +71,7 @@ const Chart = () => {
         <FaFacebookSquare className='icon' />
         <h2>Social_facebook</h2>
       </TextWrap>
+
       <ResponsiveContainer width={'100%'} height={400}>
         <LineChart
           width={600}
@@ -108,6 +109,7 @@ const Chart = () => {
           />
         </LineChart>
       </ResponsiveContainer>
+
       <TextWrap justifyContent='center'>
         <h3>Fraction of actual spend</h3>
       </TextWrap>
