@@ -5,7 +5,6 @@ import ChartComponent from './Components/ChartComponent';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import InputComponent from './Components/InputComponent';
 
 function App() {
   useEffect(() => {
@@ -17,9 +16,6 @@ function App() {
       <GlobalStyle />
       {/* For redirection */}
       <Switch>
-        <Route path='/input'>
-          <InputComponent />
-        </Route>
         <Route path='/chart1'>
           <ChartComponent />
         </Route>

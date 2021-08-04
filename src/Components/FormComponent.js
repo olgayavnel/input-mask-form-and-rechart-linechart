@@ -5,6 +5,7 @@ import { optionsData } from '../data/optionsData';
 import DatePickerComponent from './DatePickerComponent';
 import { Button } from './FormButton';
 import { Checkbox } from './FormCheckbox';
+import useFormState from './useFormState';
 
 const Section = styled.section`
   min-height: 100vh;
@@ -117,24 +118,18 @@ const Input = styled.input`
 `;
 
 function FormComponent() {
-  const { formRows, setFormRows, handleChange } =
+  const { costs, setCosts, handleChange, getTotalCosts } =
     useFormState(defaultCostsData);
-
-  const getTotalCosts = () => {
-    return formRows.reduce((total, item) => {
-      return total + Number(item.price);
-    }, 0);
-  };
 
   return (
     <Section>
       <Grid>
         <Form
           onSubmit={console.log('hello')}
-          data-aos='zoom-in'
-          data-aos-duration='500'
-          data-aos-once='true'
-          data-aos-anchor-placement='center bottom'
+          // data-aos='zoom-in'
+          // data-aos-duration='500'
+          // data-aos-once='true'
+          // data-aos-anchor-placement='center bottom'
         >
           <Row>
             <LabelMedia>
@@ -163,7 +158,7 @@ function FormComponent() {
               </Col>
             ))}
           </Row>
-          {formRows.map((item, index) => (
+          {costs.map((item, index) => (
             <Row key={index}>
               <Col size={1} fontSize={1} letterSpacing={0.05}>
                 <Label
@@ -215,46 +210,5 @@ function FormComponent() {
     </Section>
   );
 }
-
-// CUSTOM HOOK
-function useFormState(initialFormRows) {
-  const [formRows, setFormRows] = useState(initialFormRows);
-
-  const handleChange = (event) => {
-    const newCosts = [...formRows];
-    const value = event.target.value;
-
-    // validation for that it's number. If it is number, it will go on
-    if (isNaN(value)) {
-      return false;
-    }
-
-    // decimal point length validation
-    if (decimalCount(value) > 2) {
-      return false;
-    }
-
-    const itemIndex = event.target.dataset.id;
-    const currentCost = newCosts[itemIndex];
-
-    currentCost['status'] = '#3F8CB0';
-    currentCost[event.target.name] = value;
-
-    setFormRows(newCosts);
-  };
-
-  return { formRows, setFormRows, handleChange };
-}
-
-// The function to calculate the length of the number after dot
-const decimalCount = (num) => {
-  const numStr = String(num);
-  if (numStr.includes('.')) {
-    // we only return 2 decimal places after '.', e.g. 89.09 ['89', '09'] -> '89' is [0], '09' is [1].
-    // return false if more than 2, meaning 2 is not included. (In the function above)
-    return numStr.split('.')[1].length;
-  }
-  return 0;
-};
 
 export default FormComponent;
