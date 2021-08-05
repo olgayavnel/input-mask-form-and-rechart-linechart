@@ -27,11 +27,13 @@ function useFormState(initialFormRows) {
     setCosts(newCosts);
   };
 
-  // calculating total costs
+  // calculating total costs, format to the 2 decimal places
   const getTotalCosts = () => {
-    return costs.reduce((total, item) => {
-      return total + Number(item.price);
-    }, 0);
+    return costs
+      .reduce((total, item) => {
+        return total + Number(item.price);
+      }, 0)
+      .toFixed(2);
   };
 
   return { costs, setCosts, handleChange, getTotalCosts };
