@@ -45,6 +45,7 @@ const decimalCount = (num) => {
   if (numStr.includes('.')) {
     // we only return 2 decimal places after '.', e.g. 89.09 ['89', '09'] -> '89' is [0], '09' is [1].
     // return false if more than 2, meaning 2 is not included. (In the function above)
+    // we slit it on 1 and we only select 1 and say legth of this 1 89.98 [98] = [1].length
     return numStr.split('.')[1].length;
   }
   return 0;
