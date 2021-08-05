@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { FaFacebookSquare } from 'react-icons/fa';
 import {
   ResponsiveContainer,
@@ -9,7 +8,9 @@ import {
   YAxis,
   Tooltip,
   Line,
+  Area,
 } from 'recharts';
+import { ChartWrapper, TextWrap } from './chartStyling';
 
 const data = [
   { name: '0', uv: 0, pv: 0, amt: 0 },
@@ -23,35 +24,6 @@ const data = [
   { name: '2', uv: 790, pv: 0, amt: 0 },
 ];
 
-const ChartWrapper = styled.section`
-  display: flex;
-  flex-direction: column;
-  min-height: 50vh;
-  margin: 3rem;
-  padding: 1.2rem;
-  background-color: #f7f9ff;
-  border-radius: 10px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-`;
-
-const TextWrap = styled.div`
-  display: flex;
-  justify-content: ${(props) => props.justifyContent};
-  color: #336581;
-  letter-spacing: 0.05rem;
-  padding: 0.6rem;
-
-  .icon {
-    font-size: 1.5rem;
-    margin-right: 0.5rem;
-  }
-
-  h3 {
-    align-self: center;
-    font-weight: 400;
-  }
-`;
-
 const Chart = () => {
   const onChangeDot = (e, xvalue, yvalue) => {
     console.log(e, xvalue, yvalue);
@@ -62,28 +34,38 @@ const Chart = () => {
 
   return (
     <ChartWrapper
-      data-aos='zoom-in'
-      data-aos-duration='500'
-      data-aos-once='true'
-      data-aos-anchor-placement='center bottom'
+    // data-aos='zoom-in'
+    // data-aos-duration='500'
+    // data-aos-once='true'
+    // data-aos-anchor-placement='center bottom'
     >
       <TextWrap>
         <FaFacebookSquare className='icon' />
         <h2>Social_facebook</h2>
       </TextWrap>
 
-      <ResponsiveContainer width={'100%'} height={400}>
+      {/* Chart container */}
+      <ResponsiveContainer width='100%' height={400}>
         <LineChart
-          width={600}
-          height={400}
+          // width={600}
+          // height={400}
           data={data}
-          margin={{
-            top: 60,
-            right: 60,
-            left: 60,
-            bottom: 20,
-          }}
+          // margin={{
+          //   top: 60,
+          //   right: 60,
+          //   left: 60,
+          //   bottom: 20,
+          // }}
+          margin={{ top: 5, right: 20, left: 0, bottom: 5 }}
         >
+          <XAxis
+            dataKey='name'
+            axisLine={false}
+            tickLine={false}
+            tickCount={8}
+            domain={['dataMin', 'dataMax']}
+          />
+          <YAxis axisLine={false} tickLine={false} />
           <Tooltip
             cursor={false}
             contentStyle={{
@@ -92,13 +74,10 @@ const Chart = () => {
             }}
           />
           <CartesianGrid stroke='#ccc' horizontal='true' vertical='' />
-          <XAxis dataKey='name' domain={['dataMin', 'dataMax']}></XAxis>
-          <YAxis></YAxis>
           <Line
             type='monotone'
             dot={false}
             dataKey='uv'
-            stroke='#336581'
             strokeWidth={2}
             draggable={true}
             activeDot={{

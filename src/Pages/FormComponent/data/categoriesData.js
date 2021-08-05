@@ -1,4 +1,4 @@
-export const optionsData = [
+export const categoriesData = [
   {
     name: 'Channel',
     size: 1,

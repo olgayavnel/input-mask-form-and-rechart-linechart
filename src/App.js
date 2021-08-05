@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import FormComponent from './Components/FormComponent';
-import GlobalStyle from './globalStyles';
-import ChartComponent from './Components/ChartComponent';
+import FormComponent from './Pages/FormComponent/FormComponent';
+import GlobalStyle from './styles/globalStyles';
+import ChartComponent from './Pages/ChartComponent/ChartComponent.js';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
