@@ -79,7 +79,7 @@ const Chart = () => {
             dot={false}
             dataKey='uv'
             strokeWidth={2}
-            draggable={true}
+            // draggable={true}
             activeDot={{
               onDrag: (event, payload) => console.log(payload.payload),
               strokeWidth: 2,
