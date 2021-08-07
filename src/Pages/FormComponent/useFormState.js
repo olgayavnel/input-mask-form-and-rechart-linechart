@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+// named function. The name is useFormState()
 function useFormState(initialFormRows) {
   const [costs, setCosts] = useState(initialFormRows);
 
@@ -39,6 +40,8 @@ function useFormState(initialFormRows) {
   return { costs, setCosts, handleChange, getTotalCosts };
 }
 
+// anonymous function doesn't have access to the constructor and can't use this keyword.
+// Lambdas are usually passed as data.
 // The function to calculate the length of the number after dot
 const decimalCount = (num) => {
   const numStr = String(num);
